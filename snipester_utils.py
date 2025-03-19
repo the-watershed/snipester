@@ -5,26 +5,39 @@ from http_engine import retrieve_information
 from data_extraction import parse_bid_information
 from globals import refresh_in, timer, total_seconds, end_datetime, bid_info
 
-def log_debug_info(self, message, color='white'):
-    self.debug_pane.append(f'<font color="{color}">{message}</font>')
+def log_debug_info(self, message, color='white', variables=None): 
+    """
+    Log a debug message to the debug pane with the specified color.
+    If variables are provided, log their names and values as well.
+    """
+    if hasattr(self, 'debug_checkbox') and self.debug_checkbox.isChecked():
+        self.debug_pane.append(f'<font color="{color}">{message}</font>')
+        if variables:
+            for var_name, var_value in variables.items():
+                self.debug_pane.append(f'<font color="cyan">{var_name}:</font> <font color="yellow">{var_value}</font>')
 
-def is_valid_link(link):
-    regex = re.compile(
-        r'^(?:http|ftp)s?://' # http:// or https://
-        r'(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|' # domain...
-        r'localhost|' # localhost...
-        r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}|' # ...or ipv4
-        r'\[?[A-F0-9]*:[A-F0-9:]+\]?)' # ...or ipv6
-        r'(?::\d+)?' # optional port
-        r'(?:/?|[/?]\S+)$', re.IGNORECASE)
-    return re.match(regex, link) is not None
+def display_info(self, info): 
+    """
+    Display bid information in the info pane and log the action.
+    """
 
-def display_info(self, info):
+    """
+    Display bid information in the info pane.
+    """
     global bid_info
     bid_info = info
+    log_debug_info(self, f"Displaying info: {info}", 'blue')  # Debug log for info
     update_info_pane(self)
 
-def start_countdown(self, time_remain):
+def start_countdown(self, time_remain): 
+    """
+    Start a countdown timer based on the time remaining.
+    Updates the timer and refresh interval accordingly.
+    """
+
+    """
+    Start a countdown timer based on the time remaining.
+    """
     global total_seconds, end_datetime, timer
     total_seconds = 0
     days_match = re.search(r'(\d+)d', time_remain)
@@ -47,7 +60,15 @@ def start_countdown(self, time_remain):
     timer.timeout.connect(lambda: update_timer(self))
     timer.start(10)  # Update every 10 milliseconds for hundredths of a second
 
-def update_timer(self):
+def update_timer(self): 
+    """
+    Update the countdown timer and refresh the info pane.
+    Stops the timer when the countdown reaches zero.
+    """
+
+    """
+    Update the countdown timer and refresh the info pane.
+    """
     global total_seconds, end_datetime, bid_info
     if total_seconds > 0:
         total_seconds -= 0.01
@@ -67,11 +88,23 @@ def update_timer(self):
     if end_datetime:
         bid_info['End Date'] = end_datetime.toString('dddd, MMMM d, yyyy hh:mm:ss AP')
     update_info_pane(self)
-    update_refresh_in_label(self)
 
-def update_info_pane(self):
+def update_info_pane(self): 
+    """
+    Update the info pane with the current bid information.
+    Clears the pane if no bid information is available.
+    """
+
+    """
+    Update the info pane with the current bid information.
+    """
     global refresh_in, bid_info
     self.info_pane.clear()
+    log_debug_info(self, f"Updating info pane with: {bid_info}", 'blue')  # Debug log for bid_info
+    if not bid_info:
+        self.info_pane.setText("<font color='red'>No bid information available.</font>")
+        return
+
     for key, value in bid_info.items():
         if key == 'Title':
             self.info_pane.append(f"<b>{key}:</b> <font color='#ADFF2F'><b>{value}</b></font>")
@@ -79,26 +112,26 @@ def update_info_pane(self):
             self.info_pane.append(f"<b>{key}:</b> <font color='#66FF66'>{value}</font>")
     self.info_pane.append(f"<b>Refresh In:</b> <font color='#66CCFF'>{refresh_in:.2f} seconds</font>")
 
-def update_refresh_in_label(self):
-    global refresh_in
-    self.refresh_in_label.setText(f"Refresh In: {refresh_in:.2f} seconds")
+def paste_clipboard(self): 
+    """
+    Paste the clipboard content into the link input field.
+    """
 
-def auction_ended(self):
-    global timer, total_seconds, refresh_in
-    self.refresh_timer.stop()
-    if timer:
-        timer.stop()
-    refresh_in = 0
-    total_seconds = 0
-    self.refresh_in_label.setText("Refresh In: 0.00 seconds")
-    self.info_pane.append("<font color='red'><b>Auction ended.</b></font>")
-    log_debug_info(self, "Auction ended.", 'red')
-
-def paste_clipboard(self):
+    """
+    Paste the clipboard content into the link input field.
+    """
     clipboard = QApplication.clipboard()
     self.link_input.setPlainText(clipboard.text())
 
-def set_refresh_interval(self):
+def set_refresh_interval(self): 
+    """
+    Set the refresh interval based on the total seconds remaining.
+    Adjusts the refresh rate dynamically as time decreases.
+    """
+
+    """
+    Set the refresh interval based on the total seconds remaining.
+    """
     global total_seconds, refresh_in
     if total_seconds > 3600:
         self.refresh_interval = 600000  # 10 minutes

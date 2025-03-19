@@ -1,0 +1,7 @@
+PyQt5==5.15.9
+qtawesome==1.2.3
+requests==2.31.0
+beautifulsoup4==4.12.2
+ebaysdk==2.2.0
+pyautogui==0.9.54
+psutil==5.9.6

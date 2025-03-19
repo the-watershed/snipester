@@ -1,0 +1,42 @@
+/* Global Styles */
+body {
+    background-color: #1C2833;
+}
+
+/* Button Styles */
+.refresh-button {
+    background-color: #3498DB;
+    color: #ECF0F1;
+}
+
+.stop-button {
+    background-color: #E74C3C;
+    color: #ECF0F1;
+}
+
+/* Label Styles */
+.link-label, .modified-link-label {
+    color: #FFFFFF;
+    background-color: #1C2833;
+    font-weight: bold;
+}
+
+.end-date-label, .refresh-in-label {
+    color: #ECF0F1;
+}
+
+/* Text Edit Styles */
+.link-input {
+    background-color: #2C3E50;
+    color: #ECF0F1;
+}
+
+.modified-link-pane, .info-pane, .debug-pane {
+    background-color: #34495E;
+    color: #ECF0F1;
+}
+
+/* Checkbox Styles */
+.checkbox {
+    color: #ECF0F1;
+}
