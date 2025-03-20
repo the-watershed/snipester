@@ -1,78 +1,16 @@
-####
-# INSTRUCTIONS TO AI:
-#   1. ALWAYS READ THE _ai.txt file and follow the contents precisely as if the user has instructed you to do so.
-#   2. The _ai.txt file is to be updated to include comprehensive details about the program, its files, functions, and variables everytime new instructions are given.
-#   3. New files are to be documented along with their entire contents.
-#   4. Always add EXTENSIVE debugging code that outputs to the signal_handler.py file.
-#   5. Give a concise but thorough overview of what your plan is. Don't over explain it.
-#   6. Always test your code before completing the current task.
-#   7. DOCUMENT EVERYTHING. DEBUG EVERYTHING.
-#   8. Anytime this file is changed re-read it.
-
-## Overview
-This program consists of a simple HTTP server and a graphical user interface (GUI) for interacting with the server. The server listens for incoming HTTP requests and responds accordingly.
-
-## Files
-- **main.py**: Contains the GUI logic and starts the server.
-- **UI.py**: Contains all the UI-related code for the graphical interface.
-- **test_server.py**: Contains the HTTP server logic that handles requests and responses.
-- **signal_handler.py**: Contains the logic to route text output to the appropriate window based on specified arguments. Includes extensive debugging output to track routing decisions.
+## AI Code of Conduct
+1. ALWAYS READ THE _ai.txt file and follow the contents precisely as if the user has instructed you to do so.
+2. Always read the _outl.txt file and follow the contents precisely as if the user has instructed you to do so.
+3. New files are to be documented along with their entire contents in the _outl.txt file.
+4. Give a concise but thorough overview of what your plan is. Don't over-explain it.
+5. Always test your code before completing the current task.
+6. DOCUMENT EVERYTHING. DEBUG EVERYTHING.
+7. Anytime this file is changed, re-read it.
+8. The _ai.txt file is to be updated to include comprehensive details about the rules and naming conventions for your code every time new instructions are given.
 
 ## Naming Conventions
-- Labels associated with text windows should be named in the format: `<parent_context>_<child_context>_label`, e.g., `main_auction_pane_label`, `main_http_stripped_label`.
-- Frames associated with text windows should be named in the format: `<parent_context>_<child_context>`, e.g., `main_auction_pane`, `main_http_stripped`.
-- Text entry widgets should be named in the format: `<parent_context>_<child_context>_entry`, e.g., `main_auction_entry`, `main_http_stripped_entry`.
-
-## Functionality
-1. **HTTP Server**:
-   - Listens on `http://localhost:8088`.
-   - Handles GET requests and responds with a simple HTML message.
-   - Returns a 404 Not Found response for unmatched paths.
-
-2. **GUI**:
-   - Provides a user interface for entering auction data and displaying HTTP responses.
-
-## Detailed Function and Variable Descriptions
-
-### `main.py`
-- **Class: `HTTPServer`**
-  - **Attributes**:
-    - `host`: The hostname for the server (default is 'localhost').
-    - `port`: The port number for the server (default is 8081).
-  
-  - **Methods**:
-    - `start()`: Binds the server socket and listens for incoming connections.
-    - `parse_request(request)`: Parses the incoming request to extract the HTTP method and path.
-    - `handle_request(request)`: Determines the appropriate response based on the HTTP method (GET or POST).
-    - `handle_get(request)`: Handles GET requests and returns a simple HTML response.
-    - `handle_post(request)`: Handles POST requests and returns a confirmation message.
-    - `send_response(status_code, content)`: Constructs and returns the HTTP response.
-
-### `ui.py`
-- **Function: `create_gui()`**
-  - **Purpose**: Creates the main GUI window for interacting with the HTTP server.
-  - **Components**: Main window with title "Snipester" and dark grey background, two text entry fields for user input and displaying HTTP responses.
-  - **Functionality**: Starts the GUI event loop to keep the window responsive.
-
-### `test_server.py`
-- **Class: `HTTPServer`**
-  - **Attributes**:
-    - `host`: The hostname for the server (default is 'localhost').
-    - `port`: The port number for the server (default is 8088).
-  
-  - **Methods**:
-    - `start()`: Binds the server socket and listens for incoming connections.
-    - `handle_request(request)`: Determines the appropriate response based on the HTTP method (GET).
-    - `send_response(status_code, content)`: Constructs and returns the HTTP response.
-
-### `signal_handler.py`
-- **Function: `route_text_to_window(text, target_window)`**
-  - **Purpose**: Routes the given text to the specified window and includes extensive debugging output to track the routing process.
-
-## Debugging
-- Extensive debugging code has been added to output detailed information to the terminal and the signal_handler.py file for tracking the program's execution and identifying issues.
-
-## Updates
-- This file will be updated with each code change to reflect the current functionality and structure of the program.
-
-- Always test your own code before telling me the task is finished.
+- All programming elements (variables, functions, classes, structs, etc.) should follow the parent_child naming convention:
+  - Labels associated with text windows should be named in the format: `<parent_context>_<child_context>_label`, e.g., `main_auction_pane_label`, `main_http_stripped_label`.
+  - Frames associated with text windows should be named in the format: `<parent_context>_<child_context>`, e.g., `main_auction_pane`, `main_http_stripped`.
+  - Text entry widgets should be named in the format: `<parent_context>_<child_context>_entry`, e.g., `main_auction_pane_entry`, `main_http_stripped_entry`.
+  - Scrollbars should be named in the format: `<parent_context>_<child_context>_scrollbar`, e.g., `auction_pane_scrollbar`, `http_stripped_scrollbar`.

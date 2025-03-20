@@ -1,0 +1,27 @@
+2025-03-19 21:57:09,339 - INFO - DEBUG: Starting GUI creation process
+2025-03-19 21:57:09,339 - INFO - Creating the main window
+2025-03-19 21:57:09,382 - INFO - Creating auction_pane
+2025-03-19 21:57:09,382 - INFO - Creating auction_pane_label
+2025-03-19 21:57:09,383 - INFO - Creating auction_pane_entry
+2025-03-19 21:57:09,384 - INFO - Creating http_stripped
+2025-03-19 21:57:09,385 - INFO - Creating http_stripped_label
+2025-03-19 21:57:09,385 - INFO - Creating http_stripped_entry
+2025-03-19 21:57:09,388 - INFO - Starting the GUI event loop
+2025-03-19 21:57:27,127 - INFO - DEBUG: Starting GUI creation process
+2025-03-19 21:57:27,128 - INFO - Creating the main window
+2025-03-19 21:57:27,168 - INFO - Creating auction_pane
+2025-03-19 21:57:27,168 - INFO - Creating auction_pane_label
+2025-03-19 21:57:27,169 - INFO - Creating auction_pane_entry
+2025-03-19 21:57:27,170 - INFO - Creating http_stripped
+2025-03-19 21:57:27,170 - INFO - Creating http_stripped_label
+2025-03-19 21:57:27,170 - INFO - Creating http_stripped_entry
+2025-03-19 21:57:27,170 - INFO - Starting the GUI event loop
+2025-03-19 21:58:09,617 - INFO - DEBUG: Starting GUI creation process
+2025-03-19 21:58:09,617 - INFO - Creating the main window
+2025-03-19 21:58:09,653 - INFO - Creating auction_pane
+2025-03-19 21:58:09,653 - INFO - Creating auction_pane_label
+2025-03-19 21:58:09,654 - INFO - Creating auction_pane_entry
+2025-03-19 21:58:09,655 - INFO - Creating http_stripped
+2025-03-19 21:58:09,655 - INFO - Creating http_stripped_label
+2025-03-19 21:58:09,655 - INFO - Creating http_stripped_entry
+2025-03-19 21:58:09,655 - INFO - Starting the GUI event loop

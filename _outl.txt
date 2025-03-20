@@ -1,0 +1,76 @@
+# Detailed Program Outline
+
+## Overview
+This program consists of a simple HTTP server and a graphical user interface (GUI) for interacting with the server. The server listens for incoming HTTP requests and responds accordingly.
+
+## Components
+
+### 1. main.py
+- **Variables:**
+  - `http_server`: Instance of the `HTTPServer` class that manages incoming HTTP requests.
+
+- **Functions:**
+  - `create_gui()`: Initializes the GUI by calling the `create_gui()` function from `ui.py`.
+
+### 2. ui.py
+- **Variables:**
+  - `root`: The main window of the GUI.
+  - `main_auction_pane`: Frame for auction input.
+  - `main_http_stripped`: Frame for displaying HTTP responses.
+  - `main_auction_pane_entry`: Text box for entering auction data.
+  - `main_http_stripped_entry`: Text box for displaying HTTP responses.
+  - `main_auction_pane_label`: Label for the auction input frame.
+  - `main_http_stripped_label`: Label for the HTTP response frame.
+  - `main_auction_pane_scrollbar`: Scrollbar for the auction input text box.
+  - `main_http_stripped_scrollbar`: Scrollbar for the HTTP response text box.
+
+- **Functions:**
+  - `create_gui()`: Creates the main GUI window for interacting with the HTTP server.
+    - **Components:**
+      - Main window with title "Snipester" and dark grey background.
+      - Two text entry fields for user input and displaying HTTP responses.
+      - Scrollbars for both text entry fields.
+
+### 3. test_server.py
+- **Class: `HTTPServer`**
+  - **Attributes:**
+    - `host`: The hostname for the server (default is 'localhost').
+    - `port`: The port number for the server (default is 8088).
+
+  - **Methods:**
+    - `__init__(self, host='localhost', port=8081)`: Initializes the server with the specified host and port.
+    - `start()`: Binds the server socket and listens for incoming connections.
+    - `parse_request(request)`: Parses the incoming request to extract the HTTP method and path.
+    - `handle_request(request)`: Determines the appropriate response based on the HTTP method (GET or POST).
+    - `handle_get(request)`: Handles GET requests and returns a simple HTML response.
+    - `handle_post(request)`: Handles POST requests and returns a confirmation message.
+    - `send_response(status_code, content)`: Constructs and returns the HTTP response.
+
+### 4. signal_handler.py
+- **Functions:**
+  - `route_text_to_window(text, target_window)`: Routes the given text to the specified window and includes extensive debugging output to track the routing process.
+
+### 5. debugger.py
+- **Functions:**
+  - `setup_debugging()`: Sets up the logging configuration to log debugging information to a file.
+  - `debug(message, level='DEBUG')`: Logs a debug message at the specified logging level and prints it to the console.
+
+## UI Elements
+- **Panes:**
+  - `main_auction_pane`: Frame for auction input.
+  - `main_http_stripped`: Frame for displaying HTTP responses.
+
+- **Text Boxes:**
+  - `main_auction_pane_entry`: Text box for entering auction data.
+  - `main_http_stripped_entry`: Text box for displaying HTTP responses.
+
+- **Labels:**
+  - `main_auction_pane_label`: Label for the auction input frame.
+  - `main_http_stripped_label`: Label for the HTTP response frame.
+
+- **Scrollbars:**
+  - `main_auction_pane_scrollbar`: Scrollbar for the auction input text box.
+  - `main_http_stripped_scrollbar`: Scrollbar for the HTTP response text box.
+
+## Conclusion
+This detailed outline provides comprehensive descriptions of every component in the program, allowing for easy reconstruction of the entire application.
